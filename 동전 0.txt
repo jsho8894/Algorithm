@@ -1,0 +1,15 @@
+coin_num, target_money = map(int, input().split())
+coin_list = []
+total_coin = 0
+
+for i in range(coin_num):
+    coin_list.append(int(input()))
+
+for i in range(1, coin_num+1):
+    if target_money // coin_list[-i] > 0:
+        total_coin += target_money // coin_list[-i]
+        target_money = target_money % coin_list[-i]
+        if target_money == 0:
+            break
+            
+print(total_coin)

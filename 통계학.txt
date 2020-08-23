@@ -1,0 +1,25 @@
+import sys
+from collections import Counter
+ 
+odd_num = int(sys.stdin.readline())
+num_list = []
+ 
+for i in range(odd_num):                                    # 테스트테이블 수를 결정
+    num_list.append(int(sys.stdin.readline()))              # 이후 입력수를 리스트에 저장
+ 
+ave = round(sum(num_list) / len(num_list))                  # 산술평균
+print(ave)
+ 
+sort_list = sorted(num_list)                                # 중간값
+print(sort_list[len(num_list) // 2])
+ 
+count = Counter(sort_list)
+count = sorted(count.items(), key=lambda x: (-x[1], x[0]))
+ 
+if count[0][1] == count[1][1]:
+    print(count[1][0])
+else:
+    print(count[0][0])
+ 
+num_range = sort_list[-1] - sort_list[0]                    # 범위값
+print(num_range)

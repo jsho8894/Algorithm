@@ -1,0 +1,32 @@
+
+prime_ox = [True for _ in range(10001)]
+
+for i in range(2, int((10001) ** 0.5)):
+    if prime_ox[i] == True:
+        for j in range(i+i, 10001, i):
+            prime_ox[j] = False 
+
+prime_list = [i for i, j in enumerate(prime_ox) if j == True and i >=2 ]
+
+
+goldbach = [[] for _ in range(10001)]
+
+for i in range(len(prime_list)):
+    for j in range(i, len(prime_list)):
+        even_num = prime_list[i] + prime_list[j]
+        if even_num % 2 == 0 and even_num <= 10000:
+            goldbach[even_num].append([prime_list[i], prime_list[j]])
+
+case = int(input())
+
+for _ in range(case):
+    num = int(input())
+    answer = [0, 0]
+    
+
+    for [i, j] in goldbach[num]:
+        if i * j > answer[0] * answer[1]:
+            answer[0] = i
+            answer[1] = j
+    
+    print("%s %s" % (answer[0], answer[1]))

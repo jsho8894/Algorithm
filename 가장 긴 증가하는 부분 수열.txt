@@ -1,0 +1,19 @@
+A = int(input())
+A_list = list(map(int, input().split()))
+result = [[] for _ in range(A)]
+
+for i in range(A):
+    if i == 0:
+        result[i].append(A_list[i])
+    else:
+        for j in range(0, i):
+            if result[j][-1] < A_list[i]:
+                if len(result[i]) - 1 < len(result[j]):
+                    result[i] = result[j] + [A_list[i]]
+        if not result[i]:
+            result[i].append(A_list[i])
+
+answer = 0
+for i in range(A):
+    answer = max(answer, len(result[i]))
+print(answer)

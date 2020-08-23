@@ -1,0 +1,7 @@
+A, B, V = map(int, input().split())
+min_days = (V - A) / (A - B)
+
+if min_days == round(min_days):
+    print(int(min_days + 1))
+else:
+    print(round(min_days+1.5))

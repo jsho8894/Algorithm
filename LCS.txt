@@ -1,0 +1,15 @@
+A = list(str(input()))
+B = list(str(input()))
+
+arr = [[0 for _ in range(len(A) + 1)] for _ in range(len(B) + 1)]
+answer = 0
+
+for i in range(len(A)):
+    for j in range(len(B)):
+        if A[i] == B[j]:
+            arr[j+1][i+1] = arr[j][i] + 1
+            answer = max(answer, arr[j+1][i+1])
+        else:
+            arr[j+1][i+1] = max(arr[j][i+1], arr[j+1][i])
+
+print(answer)

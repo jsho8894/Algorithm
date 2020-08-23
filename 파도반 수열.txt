@@ -1,0 +1,25 @@
+def padovan(i):
+    if i == 1 or i == 2 or i ==3:
+        return 1
+    elif i == 4 or i == 5:
+        return 2
+    else:
+        answer = 0
+        temp_1 = 1
+        temp_2 = 1
+        temp_3 = 1
+        temp_4 = 2
+        temp_5 = 2
+        for j in range(6, i + 1):
+            answer = temp_5 + temp_1
+            temp_1 = temp_2
+            temp_2 = temp_3
+            temp_3 = temp_4
+            temp_4 = temp_5
+            temp_5 = answer
+        return answer
+        
+case = int(input())
+for _ in range(case):
+    N = int(input())
+    print(padovan(N))

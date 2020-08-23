@@ -1,0 +1,15 @@
+triangle = int(input())
+triangle_matrix = []
+max_matrix = [[] for _ in range(triangle)]
+
+for _ in range(triangle):
+    triangle_matrix.append(list(map(int, input().split())))
+
+for i in range(triangle - 1, -1, -1):
+    for j in range(len(triangle_matrix[i])):
+        if i == triangle - 1:
+            max_matrix[i].append(triangle_matrix[i][j])
+        else:
+            max_matrix[i].append(triangle_matrix[i][j] + max(max_matrix[i+1][j], max_matrix[i+1][j+1]))
+
+print(max_matrix[0][0])

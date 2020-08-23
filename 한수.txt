@@ -1,0 +1,17 @@
+input_num = int(input())
+all_numbers = []
+
+for k in range(1, input_num+1):
+    if 0 < k < 100:
+        all_numbers.append(k)
+
+    elif 100 <= k < 1000:
+        number_shape = []
+        number_shape = [k // 100, (k // 10) % 10, k % 10]
+        if number_shape[0] - number_shape[1] == number_shape[1] - number_shape[2]:
+            all_numbers.append(k)
+
+    elif input_num == 1000:
+        break
+
+print(len(all_numbers))
